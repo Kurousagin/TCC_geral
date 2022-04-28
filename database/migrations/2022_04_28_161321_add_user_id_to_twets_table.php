@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('twets', function (Blueprint $table) {
-            $table->foreign('user_id')->constrained()->ondeleted('cascade');
+            $table->dropColumn('user_id')->constrained()->ondeleted('cascade');
         });
     }
 };

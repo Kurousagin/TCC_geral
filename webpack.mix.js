@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix
+
 .styles([
     'resources/css/reset.css ',
     'resources/css/login.css ',

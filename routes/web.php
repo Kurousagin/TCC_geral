@@ -31,22 +31,29 @@ Route::get('/posts', function () {
     return view('home');
 })->middleware(['auth'])->name('/posts');
 
+Route::get('/edicao)perfil', function () {
+    return view('edit_perfil');
+})->middleware(['auth'])->name('/edicao_perfil');
+
 /*rota para criar tweet */
 Route::get('/twet', [TwetController::class,'index'])->name('home');
 
 /*rota para criar tweet */
 Route::post('/twet', [TwetController::class,'store']);
 
-Route::get('/dashboard', function () {
-    
+Route::get('/dashboard', function () {    
 
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
 
+
+
+
+
 require __DIR__.'/auth.php';
 
-Route::get('/tweet',[TweetController::class,'index'])->name('home');
+
 
 

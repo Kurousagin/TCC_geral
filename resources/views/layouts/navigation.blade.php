@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" style="background-color: #008cff">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-sky-500 via-neutral-50 to-yellow-300">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -34,7 +34,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-white hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <button class="flex items-center text-sm font-medium text-zinc-900 hover:text-rose-700 hover:border-gray-300 focus:outline-none focus:text-rose-700 focus:border-gray-300 transition duration-150 ease-in-out">
                           <div>{{ Auth::user()->name }}</div> <!-- exibe o nome do usuário-->
 
                             <div class="ml-1">
@@ -43,6 +43,7 @@
                                 </svg>
                             </div>
                         </button>
+                        
                     </x-slot>
 
                     <x-slot name="content">
@@ -56,7 +57,14 @@
                                 {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
+                    <x-dropdown-link :href="route('/edicao_perfil')">
+                        {{ __('Editar Perfil') }}
+                    </x-dropdown-link>
+
                     </x-slot>
+
+                    
+                    
                 </x-dropdown>
             </div>
 
@@ -110,6 +118,9 @@
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
+                    <x-dropdown-link :href="route('/edicao_perfil')">
+                        {{ __('Editar Perfil') }}
+                    </x-dropdown-link>
                 </form>
             </div>
         </div>
