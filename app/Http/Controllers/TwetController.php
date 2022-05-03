@@ -40,13 +40,25 @@ class TwetController extends Controller
 
             $request->image->move(public_path('site/img'), $imageName);
 
-            $twet->image =$imageName; 
+            $twet->image =$imageName;  
             
         }
         
 
         //image upload
 */
-return view('posts.twets');
+return view('home');
     }
+
+    public function delete(){
+
+        $twet = Twet::findOrFail($id);
+        $twet -> delete();
+        return view('dashboard');
+    }
+
+
 }
+
+
+
