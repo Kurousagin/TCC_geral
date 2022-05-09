@@ -27,11 +27,12 @@ Route::get('/exclusive', function () {
     return view('premium');
 })->middleware(['auth'])->name('/exclusive');
 
-Route::get('/posts', function () {
-    return view('home');
-})->middleware(['auth'])->name('/posts');
 
-Route::get('/edicao)perfil', function () {
+
+Route::get('/posts', [TwetController::class,'Home'])->middleware(['auth'])->name('/posts');
+
+
+Route::get('/edicao-perfil', function () {
     return view('edit_perfil');
 })->middleware(['auth'])->name('/edicao_perfil');
 
@@ -41,10 +42,8 @@ Route::get('/twet', [TwetController::class,'index'])->name('home');
 /*rota para criar tweet */
 Route::post('/twet', [TwetController::class,'store']);
 
-Route::get('/dashboard', function () {    
+Route::get('/dashboard', [TwetController::class,'index'])->middleware(['auth'])->name('dashboard');
 
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 
 

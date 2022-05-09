@@ -8,40 +8,26 @@
    
                       
 
-<!--
-                    <form method="POST" action="/twet">
+                    <form method="POST" action="/edicao-perfil">
                         @csrf
-
-                        <textarea name="body" id="body" class="w-full" placeholder="tweet aqui ó" style="border-radius: 20px" required
-                            autofocus></textarea>
-
-
-                        <hr class="my-4">
-
-                        <footer class="flex justify-between items-center">
-
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow px-10 text-sm text-white h-10">
-                                Publish
-                            </button>
+                            <label for="">Escolha a imagem de perfil</label>
                             <input type='file' id="image" name="image" />
 
-                        </footer>
+                        <div>
+                            <input type="text" placeholder="Nome">
+                            <input type="text" placeholder="numero">
+                            <input type="text" placeholder="escolaridade">
+                            <input type="date" placeholder="nascimento">
+                           
 
-                    </form>
-                -->
+                        </div>
+                        
+
+                    </form
 
 
 
 
 
-
-
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
+     >
 </x-app-layout>

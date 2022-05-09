@@ -4,49 +4,61 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Twet;
+use Symfony\Component\Console\Input\Input;
+use Symfony\Component\HttpFoundation\File\File;
 
 class TwetController extends Controller
 {
     public function index()
+
     {
-        return view('posts.twets', [
-            'posts' => auth()->user()
-        ]);
+        $posts = Twet::all();
+
+        return view('dashboard')->with('posts', $posts);
     }
+    public function Home()
+
+    {
+        $posts = Twet::all();
+
+
+
+        return view('home')->with('posts', $posts);
+    }
+
+
+
 
 
     public function store(Request $request)
     {
-       
+        $posts = new Twet;
 
-        $attributes = request()->validate(['body' => 'required|max:255']);
-      
-        $image= request()->validate(['image' => 'required|max:255']);
-        $twet = Twet::create([
-            'user_id' => auth()->id(),
-            'body' =>  $attributes['body'],
-           'image'=> $image['image']
-        ]);
+
         $user = auth()->user();
-        $twet->user_id = $user->id;
+        $posts->user_id = $user->id;
+        $posts->body =  $request->body;
+        
+        $posts->image = '' ;
 
-
-/*        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $requestImage = $request->image;
-            $extesion = $requestImage->extesion();
 
-            $imageName = md5($requestImage->getClientOriginalName(). strtotime("now") ).  "." . $extesion;
+            $extensao = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extensao;
 
             $request->image->move(public_path('site/img'), $imageName);
 
-            $twet->image =$imageName; 
-            
+            $posts->image = $imageName;
         }
-        
 
-        //image upload
-*/
-return view('posts.twets');
+
+
+        $posts->save();
+
+
+
+        return redirect('/posts');
     }
 }
