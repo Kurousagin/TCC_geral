@@ -50,9 +50,15 @@ class TwetController extends Controller
 
             $request->image->move(public_path('site/img'), $imageName);
 
+<<<<<<< HEAD
             $posts->image = $imageName;
+=======
+            $twet->image =$imageName;  
+            
+>>>>>>> ad18a8acffff169967cdb5f4cdcc05d6f145553d
         }
 
+<<<<<<< HEAD
 
 
         $posts->save();
@@ -60,5 +66,22 @@ class TwetController extends Controller
 
 
         return redirect('/posts');
+=======
+        //image upload
+*/
+return view('home');
+>>>>>>> ad18a8acffff169967cdb5f4cdcc05d6f145553d
     }
+
+    public function delete(){
+
+        $twet = Twet::findOrFail($id);
+        $twet -> delete();
+        return view('dashboard');
+    }
+
+
 }
+
+
+

@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/interaction', function () {
+Route::get('/interaction', function () { 
     return view('groups');
 })->middleware(['auth'])->name('/interaction');
 
@@ -37,10 +37,16 @@ Route::get('/edicao-perfil', function () {
 })->middleware(['auth'])->name('/edicao_perfil');
 
 /*rota para criar tweet */
-Route::get('/twet', [TwetController::class,'index'])->name('home');
+//Route::get('/twet', [TwetController::class,'index'])->name('home');
 
 /*rota para criar tweet */
-Route::post('/twet', [TwetController::class,'store']);
+//Route::post('/twet', [TwetController::class,'store']);
+
+/*rota para deletar tweet */
+//Route::post('/twet_delete', [TwetController::class,'delete']);
+
+Route::resource('twet', 'PostController');
+
 
 Route::get('/dashboard', [TwetController::class,'index'])->middleware(['auth'])->name('dashboard');
 
